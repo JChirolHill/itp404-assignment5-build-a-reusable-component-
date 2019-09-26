@@ -16,7 +16,7 @@ export default class App extends React.Component {
       loading: false,
       startTimer: false,
       startTimer2: true,
-      timer1Length: 30,
+      timer1Length: 3,
       timer2Length: 120,
       blockInput: false,
     };
@@ -70,7 +70,7 @@ export default class App extends React.Component {
 
   handleTimerFinish = () => {
     this.setState({
-      startTimer: false,
+      // startTimer: false,
       blockInput: true
     });
   }
