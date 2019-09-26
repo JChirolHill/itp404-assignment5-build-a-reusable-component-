@@ -6,7 +6,7 @@ export default class CountdownTimer extends React.Component {
     super(props);
     this.timer = 0;
     this.state = {
-      running: false,
+      running: this.props.start,
       time: this.props.totalTime,
       secondsLeft: this.props.totalTime,
     }
@@ -17,7 +17,7 @@ export default class CountdownTimer extends React.Component {
       secondsLeft: this.state.secondsLeft - 1,
       running: true,
     });
-    if(this.state.secondsLeft === 0) { // when finish
+    if(this.state.secondsLeft <= 0) { // when finish
       clearInterval(this.timer);
       if(this.props.onFinish) {
         this.props.onFinish();
@@ -25,12 +25,16 @@ export default class CountdownTimer extends React.Component {
     }
   }
 
-  render() {
+  componentDidMount() {
     // initiates timer
-    if(this.props.start && this.state.running === false) {
+    console.log('yo');
+    console.log(this.props.start);
+    if(this.state.running) {
       this.timer = setInterval(this.countDown, 1000);
     }
+  }
 
+  render() {
     if(typeof this.props.children === 'function') {
       return this.props.children(
         this.state.secondsLeft

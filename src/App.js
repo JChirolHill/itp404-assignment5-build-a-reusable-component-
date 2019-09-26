@@ -16,6 +16,7 @@ export default class App extends React.Component {
       loading: false,
       startTimer: false,
       startTimer2: true,
+      timer1Length: 30,
       timer2Length: 120,
       blockInput: false,
     };
@@ -129,10 +130,14 @@ export default class App extends React.Component {
               User can enter any values they want.
               <br/>As a creative exercise, type as many words as you can think of in thirty seconds
             </h5>
-            <CountdownTimer
-              totalTime={30}
-              start={this.state.startTimer}
-              onFinish={this.handleTimerFinish} />
+            { this.state.startTimer ?
+              <CountdownTimer
+                totalTime={this.state.timer1Length}
+                start={this.state.startTimer}
+                onFinish={this.handleTimerFinish} />
+              : `${this.state.timer1Length} Seconds Left`
+
+            }
             <EditableList
               listItems={this.state.words1}
               onSubmitInput={this.handleAppendList1}
