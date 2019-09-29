@@ -34,6 +34,7 @@ export default class EditableList extends React.Component {
         this.handleInputChange,
         this.handleSubmit,
         this.props.onClick,
+        this.props.placeholder,
       );
     }
     return (

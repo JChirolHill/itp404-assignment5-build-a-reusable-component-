@@ -142,9 +142,9 @@ export default class App extends React.Component {
               listItems={this.state.words1}
               onSubmitInput={this.handleAppendList1}
               onClick={this.handleClickItem1}
-              placeholder="unexpected">
+              placeholder={"phenomenal..."}>
               {
-                (listItems, inputVal, handleInputChange, handleSubmit, onClick) => {
+                (listItems, inputVal, handleInputChange, handleSubmit, onClick, placeholder) => {
                   return(
                     <div>
                       { this.state.blockInput ? undefined :
@@ -152,7 +152,8 @@ export default class App extends React.Component {
                           <input
                             value={inputVal}
                             onChange={handleInputChange}
-                            onKeyDown={this.handleKeyDown} />
+                            onKeyDown={this.handleKeyDown}
+                            placeholder={placeholder ? placeholder : undefined} />
                         </form>
                       }
 
